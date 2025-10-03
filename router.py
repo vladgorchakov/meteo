@@ -19,4 +19,5 @@ class WiFiRouter:
 
     @property
     def state(self):
+
         return self.switch.value()
