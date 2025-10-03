@@ -29,12 +29,13 @@ class WiFiRouter:
     def state(self):
         return self.switch.value()
 
+
 # Периодические осуществляется проверка состояния (есть ли соединение)
 # Проверка доступа в Интернет (сделать пинг, проверить статус)
 # При условии, что активен маршрутизатор
 class ConnectionChecker:
     def __init__(self, wlan, ip="8.8.8.8", port=53):
-        self.ip = ip #Можно список IP для проверки в виде кортежа ((ip:port), (ip:port))
+        self.ip = ip  # Можно список IP для проверки в виде кортежа ((ip:port), (ip:port))
         self.port = port
         self.__wlan = wlan
         self.__external_is_connect = False
@@ -47,7 +48,6 @@ class ConnectionChecker:
                 self.__internal_is_connect = True
                 break
             sleep(1)
-
 
     def __check_external_network(self):
         # Установить таумаут для ожидания ответа от сервера
@@ -95,7 +95,7 @@ class WiFiConnection:
 
         return self.__wlan
 
-        
+
 # Опрос датчиков 
 
 # Запаковка данных с датчиков в необходимый формат
