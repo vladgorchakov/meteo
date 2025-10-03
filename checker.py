@@ -33,14 +33,14 @@ class ConnectionChecker:
                 return False
             else:
                 return True
+            finally:
+                try:
+                    client.close()
+                except:
+                    pass
 
     def check(self) -> tuple:
-        self.__internal_is_connect = False
-        self.__external_is_connect = False
-
-        if self.__check_internal_network():
-            self.__internal_is_connect = True
-            if self.__check_external_network():
-                self.__external_is_connect = True
+        self.__internal_is_connect = self.__check_internal_network()
+        self.__external_is_connect = self.__check_external_network() if self.__internal_is_connect else False
 
         return self.__internal_is_connect, self.__external_is_connect

@@ -38,7 +38,7 @@ if router.state:
     while time() - start_time < 60: #Config.TIME_ON_LIMIT:
         state_buf = connection_state.check()
 
-        print("internal network: ", "Yes" if state_buf[0] else "No")
-        print("external network: ", "Yes" if state_buf[1] else "No")
+        print("internal network: ", "✅" if state_buf[0] else "❌")
+        print("external network: ", "✅" if state_buf[1] else "❌")
 
-        sleep(1)
+        sleep(5)
