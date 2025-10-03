@@ -18,10 +18,14 @@
 # Опрос кнопок 
 #   Если кнопка активна, то осуществить вывод запрашиваемой информации на OLED дисплей
 
+from time import time, sleep
 from config import Config
 from router import WiFiRouter
 from connection import WiFiConnection
 from checker import ConnectionChecker
+
+
+start_time = time()
 
 router = WiFiRouter(26)
 wifi_connection = WiFiConnection(Config.WiFi_SSID, Config.WiFi_PASSWORD)
@@ -31,5 +35,8 @@ router.start()
 if router.state:
     wlan = wifi_connection.create_wlan()
     conn_status = ConnectionChecker(wlan)
+
+while time() - start_time < Config.TIME_ON_LIMIT:
     print(conn_status.internal_is_connect)
     print(conn_status.external_is_connect)
+    sleep(5)
