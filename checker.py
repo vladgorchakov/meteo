@@ -1,3 +1,7 @@
+import socket
+from time import sleep
+
+
 class ConnectionChecker:
     def __init__(self, wlan, ip="8.8.8.8", port=53):
         self.ip = ip  # Можно список IP для проверки в виде кортежа ((ip:port), (ip:port))
