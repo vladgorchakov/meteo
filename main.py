@@ -24,7 +24,6 @@ from router import WiFiRouter
 from connection import WiFiConnection
 from checker import ConnectionChecker
 
-
 start_time = time()
 
 router = WiFiRouter(26)
@@ -34,9 +33,12 @@ conn_status = ConnectionChecker(wifi_connection)
 router.start()
 if router.state:
     wlan = wifi_connection.create_wlan()
-    conn_status = ConnectionChecker(wlan)
+    connection_state = ConnectionChecker(wlan)
 
-while time() - start_time < Config.TIME_ON_LIMIT:
-    print(conn_status.internal_is_connect)
-    print(conn_status.external_is_connect)
-    sleep(5)
+    while time() - start_time < 60: #Config.TIME_ON_LIMIT:
+        state_buf = connection_state.check()
+
+        print("internal network: ", "Yes" if state_buf[0] else "No")
+        print("external network: ", "Yes" if state_buf[1] else "No")
+
+        sleep(1)
