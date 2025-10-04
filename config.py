@@ -53,8 +53,8 @@ class Config:
     Vin_PIN = 0 # Вход АЦП для измерения напряжения на входе устройства (проверка уровня заряда аккумулятора)
 
     # Wi-Fi configuration
-    WiFi_SSID = "b76lop" # SSID Wi-Fi Имя сети, к которой подключаемся
-    WiFi_PASSWORD = "chirp339" # Password Wi-Fi пароль доступа к сети, к которой подключаемся
+    WiFi_SSID = "" # SSID Wi-Fi Имя сети, к которой подключаемся
+    WiFi_PASSWORD = "" # Password Wi-Fi пароль доступа к сети, к которой подключаемся
     WiFi_CONNECT_DELAY = 100 # Время ожидания перед подключением к сети в секундах (время для загрузки маршрутизатора)
     WiFi_CONNECT_TIMEOUT = 20 # Время ожидания подключения к сети в секундах
     WiFi_CONNECT_COUNT = 3 # Количество попыток подключения к сети
@@ -66,11 +66,11 @@ class Config:
     MODEM_CONNECT_COUNT = 3 # Количество попыток подключения к сети
 
     # Internet test server 1
-    TEST_SERVER1_IPv4 = "8.8.8.8"
-    TEST_SERVER1_MASK = "255.255.255.0"
-    TEST_SERVER1_GATEWAY = "1.1.1.1"
-    TEST_SERVER1_PORT = "80"
-    TEST_SERVER1_IPv6 = "8.8.8.8"
+    TEST_SERVERS = [
+        ("dns", ("8.8.8.8", 53)),
+        ("mqtt", ("mqtt3.thingspeak.com", 8883)),
+        ("https", ("api.thingspeak.com",  443)),
+    ]
 
     # Time configuration
     TIME_ON_LIMIT = 300 # Время работы в секундах с момента включения питания
