@@ -53,8 +53,8 @@ class Config:
     Vin_PIN = 0 # Вход АЦП для измерения напряжения на входе устройства (проверка уровня заряда аккумулятора)
 
     # Wi-Fi configuration
-    WiFi_SSID = "" # SSID Wi-Fi Имя сети, к которой подключаемся
-    WiFi_PASSWORD = "" # Password Wi-Fi пароль доступа к сети, к которой подключаемся
+    WiFi_SSID = "339-1" # SSID Wi-Fi Имя сети, к которой подключаемся
+    WiFi_PASSWORD = "51048563" # Password Wi-Fi пароль доступа к сети, к которой подключаемся
     WiFi_CONNECT_DELAY = 100 # Время ожидания перед подключением к сети в секундах (время для загрузки маршрутизатора)
     WiFi_CONNECT_TIMEOUT = 20 # Время ожидания подключения к сети в секундах
     WiFi_CONNECT_COUNT = 3 # Количество попыток подключения к сети
@@ -68,9 +68,9 @@ class Config:
     # Internet test server 1
     TEST_SERVERS = [
         ("dns", ("8.8.8.8", 53)),
-        ("mqtt", ("mqtt3.thingspeak.com", 8883)),
-        ("https", ("api.thingspeak.com",  443)),
-        ("telegram", ("api.telegram.org", 443)),
+        ("thingspeak mqtt api", ("mqtt3.thingspeak.com", 8883)),
+        ("thingspeak https api", ("api.thingspeak.com",  443)),
+        ("telegram api", ("api.telegram.org", 443)),
     ]
 
     # Time configuration

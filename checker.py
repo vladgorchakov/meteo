@@ -1,7 +1,6 @@
 import socket
 from time import sleep
 from config import Config
-from typing import Union
 
 '''
     Методы класса реализуют проверку доступности внутренней и внешней сети
@@ -42,7 +41,7 @@ class ConnectionChecker:
                 except:
                     pass
 
-    def check(self) -> Union[tuple, bool]:
+    def check(self):
         self.__internal_is_connect = self.__check_internal_network()
 
         if not self.__internal_is_connect:
