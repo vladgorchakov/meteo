@@ -70,6 +70,7 @@ class Config:
         ("dns", ("8.8.8.8", 53)),
         ("mqtt", ("mqtt3.thingspeak.com", 8883)),
         ("https", ("api.thingspeak.com",  443)),
+        ("telegram", ("api.telegram.org", 443)),
     ]
 
     # Time configuration
