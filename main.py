@@ -23,8 +23,28 @@ from config import Config
 from router import WiFiRouter
 from connection import WiFiConnection
 from checker import ConnectionChecker
+from ssd1306.ssd1306 import SSD1306_I2C
+from machine import Pin, I2C
 
+i2c = I2C(scl=Pin(22), sda=Pin(21))
+print(i2c.scan())
+
+oled_width = 128
+oled_height = 64
+
+try:
+    oled = SSD1306_I2C(oled_width, oled_height, i2c)
+except OSError:
+    print("Display: can not connect")
+
+wlan = WiFiConnection(Config.WiFi_SSID, Config.WiFi_PASSWORD).create_wlan()
+net_checker = ConnectionChecker(wlan, Config.TEST_SERVERS)
+
+
+
+'''
 start_time = time()
+
 router = WiFiRouter(26)
 
 router.start()
@@ -42,3 +62,5 @@ if router.state:
                 print(f"{Config.TEST_SERVERS[i][0]}: ", "yes" if state_buf[1][i] else "no")
 
         sleep(5)
+'''
+
