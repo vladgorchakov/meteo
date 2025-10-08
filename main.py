@@ -18,14 +18,16 @@
 # Опрос кнопок 
 #   Если кнопка активна, то осуществить вывод запрашиваемой информации на OLED дисплей
 
-from time import time, sleep
+from time import time, sleep, sleep_ms
 from config import Config
 from router import WiFiRouter
 from connection import WiFiConnection
 from checker import ConnectionChecker
 from ssd1306.ssd1306 import SSD1306_I2C
+from keyboard import KeyBoard
 from machine import Pin, I2C
 
+'''
 i2c = I2C(scl=Pin(22), sda=Pin(21))
 print(i2c.scan())
 
@@ -40,7 +42,7 @@ except OSError:
 wlan = WiFiConnection(Config.WiFi_SSID, Config.WiFi_PASSWORD).create_wlan()
 net_checker = ConnectionChecker(wlan, Config.TEST_SERVERS)
 
-
+'''
 
 '''
 start_time = time()
@@ -63,4 +65,9 @@ if router.state:
 
         sleep(5)
 '''
+keyword = KeyBoard((34,35))
+while True:
+    keyword.update()
+    print(keyword.is_pressed())
+    sleep_ms(500)
 
