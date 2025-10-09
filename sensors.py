@@ -34,6 +34,39 @@ class SensorData:
         self.INA219_Power = 0
         self.INA219_Current = 0
 
+    def get_data_for_display(self):
+        display_data = [
+                        (
+                            "*DATE & TIME*",
+                            f"{self.RTC_DS3231_Date}",
+                            f"{self.RTC_DS3231_Time}"
+                        ),
+                        (
+                            "*NEXT ALARM*",
+                            f"{self.RTC_DS3231_Alarm_Date}",
+                            f"{self.RTC_DS3231_Alarm_Time}"),
+                        (
+                            "*BME280*",
+                            f"Temperature: {self.BME280_Temperature} C",
+                            f"Humidity: {self.BME280_Humidity} %",
+                            f"Pressure: {self.BME280_Pressure} hPa"
+                        ),
+                        (
+                            f"DS18B20 1: {self.DS18B20_1_Temperature}",
+                            f"DS18B20 2: {self.DS18B20_2_Temperature}",
+                            f"DS18B20 3: {self.DS18B20_3_Temperature}",
+                            f"DS18B20 4: {self.DS18B20_4_Temperature}",
+                            f"DS18B20 5: {self.DS18B20_5_Temperature}"
+                        ),
+                        (
+                            "*INA219*",
+                            f"current: {self.INA219_Current} A",
+                            f"Vbus: {self.INA219_BusVoltage} V",
+                            f"V shunt: {self.INA219_ShuntVoltage} V",
+                            f"Power: {self.INA219_Power} W")
+                        ]
+
+        return display_data
 
 def test():
     sensor = SensorData()
