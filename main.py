@@ -68,6 +68,9 @@ if router.state:
 keyword = KeyBoard((34,35))
 while True:
     keyword.update()
-    print(keyword.is_pressed())
-    sleep_ms(500)
+    key_state = keyword.get_pressed_state()
+    for i in range(len(key_state)):
+        if key_state[i]:
+            print(f"key {i} pressed")
 
+    sleep_ms(50)
