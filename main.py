@@ -18,27 +18,20 @@
 # Опрос кнопок 
 #   Если кнопка активна, то осуществить вывод запрашиваемой информации на OLED дисплей
 
-from time import time, sleep, sleep_ms
-from config import Config
-from router import WiFiRouter
-from connection import WiFiConnection
-from checker import ConnectionChecker
-from ssd1306.ssd1306 import SSD1306_I2C
-from keyboard import KeyBoard
+from time import sleep_ms
+from gui.keyboard import KeyBoard
 from machine import Pin, I2C
-from ssd1306.manage import DisplayDataManager
-from sensors import SensorData
+from gui.display import SSD1306_I2C
+from sensors.sensors_data import SensorData
 
 
 i2c = I2C(scl=Pin(22), sda=Pin(21))
-print(i2c.scan())
-
-oled = None
+display = None
 oled_width = 128
 oled_height = 64
 
 try:
-    oled = SSD1306_I2C(oled_width, oled_height, i2c)
+    display = SSD1306_I2C(oled_width, oled_height, i2c)
 except OSError:
     print("Display: can not connect")
 
@@ -71,7 +64,6 @@ if router.state:
 '''
 data_sen = SensorData()
 
-display = DisplayDataManager(oled)
 data = data_sen.get_data_for_display()
 data_size = len(data)
 

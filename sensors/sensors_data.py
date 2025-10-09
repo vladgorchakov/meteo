@@ -38,15 +38,18 @@ class SensorData:
         display_data = [
                         (
                             "*DATE & TIME*",
+                            "",
                             f"{self.RTC_DS3231_Date}",
                             f"{self.RTC_DS3231_Time}"
                         ),
                         (
                             "*NEXT ALARM*",
+                            "",
                             f"{self.RTC_DS3231_Alarm_Date}",
                             f"{self.RTC_DS3231_Alarm_Time}"),
                         (
                             "*BME280*",
+                            "",
                             f"Temperature: {self.BME280_Temperature} C",
                             f"Humidity: {self.BME280_Humidity} %",
                             f"Pressure: {self.BME280_Pressure} hPa"
